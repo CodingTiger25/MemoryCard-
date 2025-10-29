@@ -50,3 +50,21 @@
   line-height: 1.15;
   margin: 0;
 }
+
+.instructions {
+  font-size: 1.5rem;
+  position: relative;
+  top: -560px;
+  left: 850px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.score {
+  font-size: 2rem;
+  position: relative;
+  top: -540px;
+  left: 0px;
+  line-height: 1.15;
+  margin: 0;
+}

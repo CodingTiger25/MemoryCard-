@@ -9,8 +9,10 @@ function App() {
     <>     
       <h1 className='title'>Pokemon Memory Game</h1>
       <div className="card">
+        <p className='instructions '>Click pokemon for a point but not same in a row</p>
        
-     
+        <h1 className='score'>SCORE</h1>
+
       </div>
     </>
   )
