@@ -17,7 +17,7 @@ useEffect(() => {
   getPokemonData(pokemonIds);
 }, []);
 
-const pokemonIds = [104, 197, 149,395]
+const pokemonIds = [104, 197, 149,395, 251,780,249,851 ]
 
 const getPokemonData = async (pokemonIdentity) => {
   const response = pokemonIdentity.map((id) =>  
@@ -34,8 +34,6 @@ const updatePoints = () => {
   setPoints(points + 1);
 }
 
-console.log(pokemon);
-
   return (
 
         <>     
@@ -46,11 +44,13 @@ console.log(pokemon);
             <h1 className='score'>SCORE</h1>
             <p>{points}</p>
 
+            <div className='pokepics'>
 
-            {pokemon.map((pokemon, index) => (
-              <img key={index} src={pokemon} onClick={updatePoints} className="logo poke-logo" alt="Pokemon Logo" />
-            ))}            
-
+            
+              {pokemon.map((pokemon, index) => (
+                <img key={index} src={pokemon} onClick={updatePoints} className="logo poke-logo" alt="Pokemon Logo" />
+              ))}            
+            </div>
           </div>
         </>
   )
