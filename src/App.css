@@ -17,6 +17,28 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.score{
+  font-size: 26rem;
+  position: relative;
+  top: -500px;
+  left: 850px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.points{
+  font-size: 20rem;
+  position: relative;
+  top: -520px;
+  left: 850px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.pic{
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
 
 .pokepics{
   display: flex;

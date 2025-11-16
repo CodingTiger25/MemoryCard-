@@ -26,12 +26,18 @@ const getPokemonData = async (pokemonIdentity) => {
   const data = await Promise.all(response);
   console.log(data);
   const imageUrl = data.map((pic) => pic.sprites.other['official-artwork'].front_default);
-    //data.sprites.other['official-artwork'].front_default;
   setPokemon(imageUrl);
 }
 
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }}
+
 const updatePoints = () => {
   setPoints(points + 1);
+  shuffleArray(pokemon);
 }
 
   return (
@@ -42,13 +48,14 @@ const updatePoints = () => {
             <p className='instructions '>Click pokemon for a point but not same in a row</p>
           
             <h1 className='score'>SCORE</h1>
-            <p>{points}</p>
+            <p className='points'>{points}</p>
 
-            <div className='pokepics'>
+            <div>
 
             
               {pokemon.map((pokemon, index) => (
-                <img key={index} src={pokemon} onClick={updatePoints} className="logo poke-logo" alt="Pokemon Logo" />
+
+                <img key={index} src={pokemon} onClick={updatePoints} className="picgrid" alt="Pokemon Logo" />
               ))}            
             </div>
           </div>
