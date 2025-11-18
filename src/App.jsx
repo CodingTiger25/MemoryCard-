@@ -17,7 +17,7 @@ useEffect(() => {
   getPokemonData(pokemonIds);
 }, []);
 
-const pokemonIds = [104, 197, 149,395, 251,780,249,851 ]
+const pokemonIds = [104, 197, 149,395, 251,780,249,851,12]
 
 const getPokemonData = async (pokemonIdentity) => {
   const response = pokemonIdentity.map((id) =>  
@@ -50,13 +50,16 @@ const updatePoints = () => {
             <h1 className='score'>SCORE</h1>
             <p className='points'>{points}</p>
 
-            <div>
+            <div className='pokegrid'>
 
-            
-              {pokemon.map((pokemon, index) => (
+              <div className='picgrid'>
 
-                <img key={index} src={pokemon} onClick={updatePoints} className="picgrid" alt="Pokemon Logo" />
-              ))}            
+              
+                {pokemon.map((pokemon, index) => (
+
+                  <img key={index} src={pokemon} onClick={updatePoints} alt="Pokemon Logo" />
+                ))}        
+              </div>      
             </div>
           </div>
         </>
