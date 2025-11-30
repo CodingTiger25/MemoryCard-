@@ -35,9 +35,27 @@ const shuffleArray = (array) => {
     [array[i], array[j]] = [array[j], array[i]];
   }}
 
-const updatePoints = () => {
+const updatePoints = (e) => {
   setPoints(points + 1);
   shuffleArray(pokemon);
+  console.log("here is e " + e);
+  checkSamePokemon(e);}
+
+const checkSamePokemon = (name) => {
+  // Logic to check if the same Pokemon was clicked consecutively
+  // If so, reset points to 0
+    if(pokeImage === null){
+      setPokeImage(name);
+    }
+    else if(pokeImage === name){
+      setPoints(0);
+      setPokeImage(null);
+    }
+    else{
+      setPokeImage(name);
+    }
+    console.log("This is " + name);
+
 }
 
   return (
@@ -56,8 +74,7 @@ const updatePoints = () => {
 
               
                 {pokemon.map((pokemon, index) => (
-
-                  <img key={index} src={pokemon} onClick={updatePoints} alt="Pokemon Logo" />
+                  <img key={index} src={pokemon} onClick= {() => updatePoints(pokemon)} alt="Pokemon Logo" />
                 ))}        
               </div>      
             </div>
