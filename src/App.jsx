@@ -10,6 +10,7 @@ function App() {
 const [pokemon,setPokemon]=useState([]);
 const [pokeImage,setPokeImage]=useState({});
 const [points,setPoints]=useState(0);
+const [bestPoints,setBestPoints]=useState(0);
 
 
 
@@ -17,14 +18,13 @@ useEffect(() => {
   getPokemonData(pokemonIds);
 }, []);
 
-const pokemonIds = [104, 197, 149,395, 251,780,249,851,12]
+const pokemonIds = [104, 197, 149,395, 251,780,249,851,12,495]
 
 const getPokemonData = async (pokemonIdentity) => {
   const response = pokemonIdentity.map((id) =>  
          fetch(`https://pokeapi.co/api/v2/pokemon/${id}`) .then((response) =>response.json()))
   //const data = await response.json();
   const data = await Promise.all(response);
-  console.log(data);
   const imageUrl = data.map((pic) => pic.sprites.other['official-artwork'].front_default);
   setPokemon(imageUrl);
 }
@@ -38,7 +38,6 @@ const shuffleArray = (array) => {
 const updatePoints = (e) => {
   setPoints(points + 1);
   shuffleArray(pokemon);
-  console.log("here is e " + e);
   checkSamePokemon(e);}
 
 const checkSamePokemon = (name) => {
@@ -48,25 +47,28 @@ const checkSamePokemon = (name) => {
       setPokeImage(name);
     }
     else if(pokeImage === name){
+      setBestPoints(points)
       setPoints(0);
       setPokeImage(null);
     }
     else{
       setPokeImage(name);
     }
-    console.log("This is " + name);
-
 }
 
   return (
 
         <>     
           <h1 className='title'>Pokemon Memory Game</h1>
-          <div className="card">
+          <div>
             <p className='instructions '>Click pokemon for a point but not same in a row</p>
           
-            <h1 className='score'>SCORE</h1>
+            <h1 className="score">SCORE</h1>
             <p className='points'>{points}</p>
+
+            <h1 className='bestScore'>Best Score</h1>
+            <p className='bestScorePoints'>{bestPoints}</p>
+            
 
             <div className='pokegrid'>
 
